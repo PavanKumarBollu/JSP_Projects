@@ -15,10 +15,12 @@
 			String insertQuery = "inset into employee(eName,eAddress,eSalary) values(?,?,?)";
 			String selectQuery = "select eId, eName, eAddress, eSalary from employee";
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection(url, uName, uPassword);
-			
-			pst1 = connection.prepareStatement("inset into employee(eName,eAddress,eSalary) values(?,?,?)");
-			pst2 = connection.prepareStatement(selectQuery);
+			connection = DriverManager.getConnection(url, uName, "Pav@0211");
+			if(connection != null)
+			{
+				pst1 = connection.prepareStatement("insert into employee(eName,eAddress,eSalary) values(?,?,?)");
+				pst2 = connection.prepareStatement(selectQuery);
+			}
 
 		} catch (ClassNotFoundException cnf) {
 			cnf.printStackTrace();
@@ -34,6 +36,7 @@ if (action.equalsIgnoreCase("register")) {
 	String eName = request.getParameter("ename");
 	String eAddress = request.getParameter("eaddress");
 	String eSalary = request.getParameter("esalary");
+	//pst1.setInt(1, 1);
 	pst1.setString(1, eName);
 	pst1.setString(2, eAddress);
 	pst1.setInt(3, Integer.parseInt(eSalary));
@@ -47,7 +50,7 @@ if (action.equalsIgnoreCase("register")) {
 } else {
 	// perporm Select Operation
 	ResultSet result = pst2.executeQuery();
-	out.println("<table><tr><th>EDI</th><th>ENAME</th><th>EADDRESS</th><th>ESALARY</th></tr>");
+	out.println("<table border='2' align='center'><tr><th>EDI</th><th>ENAME</th><th>EADDRESS</th><th>ESALARY</th></tr>");
 
 	while (result.next()) {
 		out.println("<tr><td>" + result.getInt("eId") + "</td><td>" + result.getString("eName") + "</td><td>"

@@ -71,6 +71,9 @@ Scripting Elements
 ===================
 
 
+JSP custom Tags 
+refer: 20_02_2023_jsp_class_notes.pdf
+
 
 
 

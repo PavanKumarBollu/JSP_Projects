@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.sql.*"%>
-<%!Connection connection = null;
+<%!
+Connection connection = null;
 	PreparedStatement pst1 = null;
 	PreparedStatement pst2 = null;
 
